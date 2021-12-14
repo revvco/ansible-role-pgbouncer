@@ -1,4 +1,21 @@
 ---
+
+- name: Increase file handlers for pgbouncer
+  template:
+    src: "default.j2"
+    dest: /etc/default/pgbouncer
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Add rds cert
+  copy:
+    src: us-east-1-bundle.pem
+    dest: /etc/pgbouncer/rds-combined-ca-bundle.pem
+    owner: root
+    group: root
+    mode: 0644
+
 - name: install pgbouncer
   apt:
     pkg: pgbouncer
@@ -22,3 +39,4 @@
     mode: 0640
   with_fileglob: templates/*
   notify: "{{ pgbouncer_service_state }} pgbouncer"
+
