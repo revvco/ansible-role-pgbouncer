@@ -48,3 +48,6 @@ pgbouncer_databases: []
 #pgbouncer_default_pool_size: 20
 # listen port
 #pgbouncer_listen_port: 5432
+
+pgbouncer_server_tls_sslmode: ""
+pgbouncer_server_tls_ca_file: ""
